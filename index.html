@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Super Natural Nail & Spa — Elizabeth, NJ</title>
+  <meta name="description" content="Elizabeth NJ's premier luxury nail salon. Expert manicures, pedicures, eyelash extensions & nail design at 1172 Dickinson St. Call (908) 344-6220." />
+  <meta property="og:title" content="New Super Natural Nail & Spa" />
+  <meta property="og:description" content="Luxury nail care in Elizabeth, NJ. Open 7 days." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   oklch(97% 0.012 88);
+      --ivory:   oklch(94% 0.018 85);
+      --gold:    oklch(72% 0.12  75);
+      --gold-dk: oklch(58% 0.11  72);
+      --sage:    oklch(55% 0.08 155);
+      --sage-lt: oklch(92% 0.04 150);
+      --sage-dk: oklch(35% 0.07 155);
+      --ink:     oklch(18% 0.02 160);
+      --muted:   oklch(50% 0.025 155);
+      --border:  oklch(88% 0.025 155);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --space-xs: clamp(0.5rem,  1vw,  0.75rem);
+      --space-sm: clamp(0.75rem, 1.5vw, 1rem);
+      --space-md: clamp(1rem,    2.5vw, 1.5rem);
+      --space-lg: clamp(2rem,    5vw,   3.5rem);
+      --space-xl: clamp(3.5rem,  8vw,   6rem);
+
+      --radius: 2px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      line-height: 1.7;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITY ─────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--space-md); }
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85em 2em;
+      border: 1.5px solid var(--gold);
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--gold); color: var(--cream); }
+    .btn-fill  { background: var(--sage-dk); border-color: var(--sage-dk); color: var(--cream); }
+    .btn-fill:hover { background: var(--sage); border-color: var(--sage); color: var(--cream); }
+
+    /* ─── TOPBAR ──────────────────────────────── */
+    #topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--sage-dk);
+      color: var(--cream);
+      font-size: 0.78rem; letter-spacing: 0.05em;
+    }
+    #topbar .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.55rem var(--space-md);
+      gap: var(--space-sm);
+    }
+    #topbar a { color: var(--ivory); opacity: 0.9; }
+    #topbar a:hover { opacity: 1; text-decoration: underline; }
+    #status-dot {
+      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); margin-right: 0.4em; vertical-align: middle;
+    }
+    #status-dot.open { background: oklch(72% 0.18 145); }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem var(--space-md);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      line-height: 1.15;
+      color: var(--sage-dk);
+    }
+    .nav-logo span { display: block; font-style: italic; font-size: 0.75em; color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; gap: var(--space-md); list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink); opacity: 0.75;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: opacity 0.15s, border-color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; border-bottom-color: var(--gold); }
+    .nav-cta { display: flex; gap: var(--space-sm); align-items: center; }
+    #hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    #hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: transform 0.2s, opacity 0.2s; }
+    #mobile-nav {
+      display: none; flex-direction: column;
+      background: var(--cream); border-top: 1px solid var(--border);
+      padding: var(--space-md);
+      gap: var(--space-sm);
+    }
+    #mobile-nav a { font-size: 1rem; font-weight: 500; color: var(--ink); padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+    #mobile-nav.open { display: flex; }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      #hamburger { display: flex; }
+    }
+
+    /* ─── HERO ────────────────────────────────── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(480px, 75vh, 820px);
+      overflow: hidden;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: var(--space-xl) var(--space-lg) var(--space-xl) var(--space-md);
+      background: var(--cream);
+    }
+    .hero-text .label { margin-bottom: var(--space-sm); }
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      color: var(--sage-dk);
+      margin-bottom: var(--space-md);
+    }
+    .hero-text h1 em { font-style: italic; color: var(--gold-dk); }
+    .hero-text p {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: var(--space-lg);
+    }
+    .hero-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+    .hero-stars {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-top: var(--space-lg);
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .hero-stars .stars { color: var(--gold); font-size: 1rem; letter-spacing: 0.1em; }
+    .hero-image {
+      position: relative; overflow: hidden;
+      background: var(--sage-lt);
+    }
+    .hero-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85);
+    }
+    .hero-image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+    }
+    /* SVG placeholder art for hero */
+    .hero-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    @media (max-width: 860px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 45vw; min-height: 260px; }
+      .hero-image::after { background: linear-gradient(to top, var(--cream) 0%, transparent 40%); }
+      .hero-text { padding: var(--space-lg) var(--space-md); }
+    }
+
+    /* ─── DIVIDER ─────────────────────────────── */
+    .divider {
+      width: 60px; height: 1.5px;
+      background: var(--gold);
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+
+    /* ─── SECTION HEADER ──────────────────────── */
+    .section-header { margin-bottom: var(--space-lg); }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--sage-dk);
+      line-height: 1.12;
+    }
+    .section-header p { color: var(--muted); max-width: 50ch; margin-top: var(--space-xs); }
+
+    /* ─── SERVICES ────────────────────────────── */
+    #services { padding: var(--space-xl) 0; background: var(--ivory); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: var(--space-md);
+    }
+    .service-card {
+      background: var(--cream);
+      padding: var(--space-lg) var(--space-md);
+      border-top: 3px solid var(--border);
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .service-card:hover { border-top-color: var(--gold); }
+    .service-card .icon {
+      width: 44px; height: 44px; margin-bottom: var(--space-sm);
+      color: var(--sage);
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem; color: var(--sage-dk);
+      margin-bottom: var(--space-xs);
+    }
+    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .service-card .price-note {
+      margin-top: var(--space-sm);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--gold-dk); text-transform: uppercase;
+    }
+
+    /* ─── HIGHLIGHT STRIP ─────────────────────── */
+    #highlights {
+      background: var(--sage-dk);
+      color: var(--cream);
+      padding: var(--space-lg) 0;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      text-align: center;
+    }
+    .highlight-item h3 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold);
+    }
+    .highlight-item p { font-size: 0.82rem; opacity: 0.75; margin-top: 0.25rem; letter-spacing: 0.06em; }
+    @media (max-width: 600px) { .highlights-grid { grid-template-columns: 1fr; } }
+
+    /* ─── ABOUT ───────────────────────────────── */
+    #about {
+      padding: var(--space-xl) 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    #about .about-image {
+      background: var(--sage-lt);
+      height: clamp(280px, 50vw, 500px);
+      overflow: hidden;
+      position: relative;
+    }
+    #about .about-image::before {
+      content: '';
+      position: absolute; bottom: -1px; left: -1px; right: -1px;
+      height: 40%;
+      background: linear-gradient(to top, var(--ivory), transparent);
+    }
+    #about .about-text { padding: var(--space-md) 0; }
+    #about .about-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--sage-dk); line-height: 1.12;
+      margin-bottom: var(--space-sm);
+    }
+    #about .about-text p {
+      color: var(--muted); font-size: 0.95rem; margin-bottom: var(--space-sm);
+      max-width: 45ch;
+    }
+
+    @media (max-width: 768px) {
+      #about { grid-template-columns: 1fr; padding: var(--space-lg) 0; }
+      #about .about-image { height: 52vw; min-height: 220px; }
+    }
+
+    /* ─── TESTIMONIALS ────────────────────────── */
+    #testimonials { padding: var(--space-xl) 0; background: var(--ivory); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .testimonial {
+      padding: var(--space-lg) var(--space-md);
+      border-left: 3px solid var(--gold);
+      background: var(--cream);
+    }
+    .testimonial blockquote {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--ink); line-height: 1.6;
+      margin-bottom: var(--space-sm);
+    }
+    .testimonial cite { font-size: 0.78rem; color: var(--muted); font-style: normal; letter-spacing: 0.06em; }
+    .testimonial .rating { color: var(--gold); font-size: 0.85rem; margin-bottom: var(--space-xs); }
+
+    /* ─── VISIT ───────────────────────────────── */
+    #visit { padding: var(--space-xl) 0; }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: var(--space-md); }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table td { padding: 0.7rem 0; font-size: 0.9rem; }
+    .hours-table td:last-child { text-align: right; color: var(--muted); }
+    .hours-table tr.today td { font-weight: 600; color: var(--sage-dk); }
+    .hours-table tr.today td:last-child { color: var(--gold-dk); }
+
+    .visit-map {
+      background: var(--sage-lt);
+      height: 320px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .visit-map iframe {
+      width: 100%; height: 100%;
+      border: none;
+      filter: saturate(0.6) contrast(1.05);
+    }
+    .contact-block { margin-top: var(--space-lg); }
+    .contact-block h3 {
+      font-family: var(--font-display); font-size: 1.3rem; color: var(--sage-dk);
+      margin-bottom: var(--space-sm);
+    }
+    .contact-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: var(--space-sm); }
+    .contact-item .icon { width: 18px; height: 18px; color: var(--sage); flex-shrink: 0; margin-top: 0.2em; }
+    .contact-item p, .contact-item a { font-size: 0.92rem; color: var(--muted); }
+    .contact-item a:hover { color: var(--sage); }
+
+    @media (max-width: 768px) {
+      .visit-grid { grid-template-columns: 1fr; }
+      .visit-map { height: 240px; }
+    }
+
+    /* ─── BOOKING BANNER ──────────────────────── */
+    #booking {
+      background: var(--sage-lt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+    #booking h2 {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--sage-dk); margin-bottom: var(--space-sm);
+    }
+    #booking p { color: var(--muted); max-width: 42ch; margin: 0 auto var(--space-lg); }
+    #booking .actions { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    footer {
+      background: var(--sage-dk);
+      color: var(--cream);
+      padding: var(--space-lg) 0 var(--space-md);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid oklch(40% 0.06 155);
+    }
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; margin-bottom: var(--space-xs);
+    }
+    .footer-brand p { font-size: 0.82rem; opacity: 0.6; max-width: 32ch; line-height: 1.6; }
+    .footer-col h4 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: var(--space-sm); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.85rem; opacity: 0.75; transition: opacity 0.15s; }
+    .footer-col ul li a:hover { opacity: 1; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: var(--space-md);
+      font-size: 0.75rem; opacity: 0.4;
+      flex-wrap: wrap; gap: var(--space-xs);
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+
+    /* SVG nail art illustration */
+    .nail-art-svg { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div id="topbar">
+    <div class="inner">
+      <span><span id="status-dot"></span><span id="status-text">Checking hours…</span></span>
+      <span>
+        <a href="tel:+19083446220">(908) 344-6220</a>
+        &ensp;·&ensp;
+        <a href="https://maps.google.com/?q=1172+Dickinson+St+Elizabeth+NJ" target="_blank" rel="noopener">1172 Dickinson St, Elizabeth NJ</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner container">
+      <a href="#" class="nav-logo">
+        New Super Natural
+        <span>Nail &amp; Spa</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services" class="active">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+19083446220" class="btn">Book Now</a>
+      </div>
+      <button id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+19083446220" style="color: var(--sage-dk); font-weight:600;">☎ (908) 344-6220</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text container" style="max-width:600px; margin:0; padding-left: clamp(1rem, 5vw, 4rem);">
+      <p class="label fade-up">Elizabeth, New Jersey</p>
+      <h1 class="fade-up delay-1">
+        Where <em>natural beauty</em><br/>
+        becomes art.
+      </h1>
+      <p class="fade-up delay-2">
+        NJ's premier nail &amp; spa destination. Expert technicians, meticulous craft, and an atmosphere designed for pure relaxation.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="tel:+19083446220" class="btn btn-fill">Book an Appointment</a>
+        <a href="#services" class="btn">Our Services</a>
+      </div>
+      <div class="hero-stars fade-up delay-3">
+        <span class="stars">★★★★½</span>
+        <span><strong>4.5</strong> on Google &mdash; 32+ reviews</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <svg class="nail-art-svg" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="680" height="680" fill="oklch(92% 0.04 150)"/>
+        <!-- Decorative botanical / nail art -->
+        <ellipse cx="340" cy="340" rx="210" ry="250" fill="oklch(88% 0.05 148)" opacity="0.6"/>
+        <ellipse cx="340" cy="310" rx="140" ry="170" fill="oklch(84% 0.06 148)" opacity="0.55"/>
+        <!-- Nail shapes -->
+        <g fill="oklch(72% 0.12 75)" opacity="0.9">
+          <rect x="272" y="200" width="52" height="80" rx="26"/>
+          <rect x="338" y="185" width="52" height="95" rx="26"/>
+          <rect x="404" y="195" width="52" height="85" rx="26"/>
+        </g>
+        <!-- Stem and leaves -->
+        <line x1="340" y1="460" x2="340" y2="560" stroke="oklch(45% 0.08 155)" stroke-width="3" opacity="0.5"/>
+        <ellipse cx="305" cy="510" rx="32" ry="16" fill="oklch(60% 0.1 152)" opacity="0.4" transform="rotate(-30 305 510)"/>
+        <ellipse cx="375" cy="490" rx="28" ry="14" fill="oklch(60% 0.1 152)" opacity="0.4" transform="rotate(25 375 490)"/>
+        <!-- Accent dots -->
+        <circle cx="200" cy="150" r="6" fill="oklch(72% 0.12 75)" opacity="0.3"/>
+        <circle cx="490" cy="580" r="8" fill="oklch(72% 0.12 75)" opacity="0.25"/>
+        <circle cx="150" cy="400" r="4" fill="oklch(60% 0.1 152)" opacity="0.3"/>
+        <circle cx="540" cy="200" r="10" fill="oklch(60% 0.1 152)" opacity="0.2"/>
+        <circle cx="460" cy="130" r="5" fill="oklch(72% 0.12 75)" opacity="0.4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS STRIP -->
+  <div id="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <h3>7</h3>
+          <p>Days a Week</p>
+        </div>
+        <div class="highlight-item">
+          <h3>No.1</h3>
+          <p>Best Nail Spa in NJ</p>
+        </div>
+        <div class="highlight-item">
+          <h3>4.5★</h3>
+          <p>Google Rating</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">What We Offer</p>
+        <div class="divider"></div>
+        <h2>Our Services</h2>
+        <p>A complete menu of luxury nail and beauty treatments performed by expert technicians.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 36V20a6 6 0 0 1 12 0v16"/>
+            <path d="M14 36h16"/>
+            <circle cx="24" cy="14" r="4"/>
+          </svg>
+          <h3>Manicures</h3>
+          <p>Classic, gel, dip powder, and custom nail design. Shaped, buffed, and finished with precision.</p>
+          <p class="price-note">From $20 · Call for full menu</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M14 32V18a4 4 0 0 1 8 0v14"/>
+            <path d="M22 32V16a4 4 0 0 1 8 0v16"/>
+            <path d="M10 32h24"/>
+          </svg>
+          <h3>Pedicures</h3>
+          <p>Relaxing foot soaks, exfoliation, callus treatment, and nail polish. Spa and deluxe options available.</p>
+          <p class="price-note">From $30 · Call for full menu</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 22 C12 14 22 8 22 8 C22 8 32 14 32 22 L28 36 H16 Z"/>
+            <line x1="22" y1="8" x2="22" y2="28"/>
+          </svg>
+          <h3>Nail Enhancements</h3>
+          <p>Acrylic full sets, fills, gel extensions, and overlays. Length and shape customized to your preference.</p>
+          <p class="price-note">Call for pricing</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <rect x="12" y="18" width="20" height="14" rx="2"/>
+            <path d="M16 18v-4a6 6 0 0 1 12 0v4"/>
+            <circle cx="22" cy="25" r="2" fill="currentColor"/>
+          </svg>
+          <h3>Nail Design</h3>
+          <p>Freehand art, ombre, chrome powder, stamping, and gem accents. Bring your inspiration.</p>
+          <p class="price-note">Call for pricing</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M10 28 Q22 10 34 28"/>
+            <path d="M14 26 Q22 16 30 26"/>
+            <line x1="22" y1="28" x2="22" y2="36"/>
+          </svg>
+          <h3>Eyelash Extensions</h3>
+          <p>Classic, hybrid, and volume sets applied lash-by-lash for a natural or dramatic effect.</p>
+          <p class="price-note">Call for pricing</p>
+        </div>
+
+        <div class="service-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 20 C12 16 32 16 32 20 L32 28 C32 32 12 32 12 28 Z"/>
+            <line x1="18" y1="16" x2="18" y2="32"/>
+            <line x1="26" y1="16" x2="26" y2="32"/>
+          </svg>
+          <h3>Waxing</h3>
+          <p>Eyebrow shaping, lip, chin, and full-face waxing. Smooth, long-lasting results.</p>
+          <p class="price-note">Call for pricing</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section style="background: var(--ivory); padding: var(--space-xl) 0;">
+    <div class="container">
+      <div id="about">
+        <div class="about-image">
+          <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%" aria-hidden="true">
+            <rect width="560" height="500" fill="oklch(90% 0.045 150)"/>
+            <circle cx="280" cy="200" r="120" fill="oklch(86% 0.055 150)" opacity="0.7"/>
+            <circle cx="280" cy="200" r="80"  fill="oklch(82% 0.065 150)" opacity="0.7"/>
+            <!-- stylized flowers -->
+            <g opacity="0.55" fill="oklch(72% 0.12 75)">
+              <ellipse cx="280" cy="130" rx="14" ry="26" />
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(45 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(90 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(135 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(180 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(225 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(270 280 200)"/>
+              <ellipse cx="280" cy="130" rx="14" ry="26" transform="rotate(315 280 200)"/>
+            </g>
+            <circle cx="280" cy="200" r="22" fill="oklch(72% 0.12 75)" opacity="0.9"/>
+            <!-- leaves bottom -->
+            <line x1="280" y1="320" x2="280" y2="420" stroke="oklch(45% 0.08 155)" stroke-width="2.5" opacity="0.4"/>
+            <ellipse cx="245" cy="375" rx="35" ry="15" fill="oklch(58% 0.09 152)" opacity="0.35" transform="rotate(-30 245 375)"/>
+            <ellipse cx="315" cy="355" rx="30" ry="13" fill="oklch(58% 0.09 152)" opacity="0.35" transform="rotate(30 315 355)"/>
+          </svg>
+        </div>
+        <div class="about-text">
+          <p class="label">Our Story</p>
+          <div class="divider"></div>
+          <h2>Luxury rooted<br/><em style="font-style:italic;color:var(--gold-dk);">in care.</em></h2>
+          <p>
+            New Super Natural Nail &amp; Spa was founded on a simple belief: every guest deserves to feel genuinely pampered. From our clean, welcoming studio on Dickinson Street to the quality products we use, every detail is chosen with your comfort in mind.
+          </p>
+          <p>
+            Our licensed technicians bring expertise and artistry to every appointment — whether you're in for a quick polish change or a full spa day. Professional, attentive, and always meticulous.
+          </p>
+          <div class="divider" style="margin-top: var(--space-md);"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-top: var(--space-sm);">
+            <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--muted);">
+              <span style="color:var(--gold);">✓</span> Licensed &amp; certified technicians
+            </li>
+            <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--muted);">
+              <span style="color:var(--gold);">✓</span> Sanitized tools for every guest
+            </li>
+            <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--muted);">
+              <span style="color:var(--gold);">✓</span> Walk-ins welcome · Appointments preferred
+            </li>
+            <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--muted);">
+              <span style="color:var(--gold);">✓</span> Credit cards &amp; cash accepted
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">What Guests Say</p>
+        <div class="divider"></div>
+        <h2>Google Reviews</h2>
+        <p>Real words from real clients in Elizabeth, NJ.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="rating">★★★★★</div>
+          <blockquote>"The staff is very professional and the place is also very clean. I always leave feeling amazing."</blockquote>
+          <cite>— Google Review</cite>
+        </div>
+        <div class="testimonial">
+          <div class="rating">★★★★★</div>
+          <blockquote>"Their customer service is amazing as is their work and they're very attentive. Highly recommend to anyone looking for a great nail salon."</blockquote>
+          <cite>— Google Review</cite>
+        </div>
+        <div class="testimonial">
+          <div class="rating">★★★★★</div>
+          <blockquote>"Experience the epitome of luxury and relaxation. Expert technicians who truly care about the quality of their work."</blockquote>
+          <cite>— Google Review</cite>
+        </div>
+      </div>
+      <p style="margin-top: var(--space-lg); text-align:center;">
+        <a href="https://maps.google.com/?q=New+Super+Natural+Nail+Spa+Elizabeth+NJ" target="_blank" rel="noopener" class="btn">Read All Reviews on Google</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- BOOKING BANNER -->
+  <section id="booking">
+    <div class="container">
+      <h2>Ready for your next<br/>appointment?</h2>
+      <p>Call us or walk in any day of the week. We'd love to see you.</p>
+      <div class="actions">
+        <a href="tel:+19083446220" class="btn btn-fill">☎ Call (908) 344-6220</a>
+        <a href="#visit" class="btn">See Hours &amp; Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Find Us</p>
+        <div class="divider"></div>
+        <h2>Hours &amp; Location</h2>
+      </div>
+      <div class="visit-grid">
+        <div>
+          <table class="hours-table" id="hours-table">
+            <tbody>
+              <tr data-day="1"><td>Monday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="2"><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="3"><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="4"><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="5"><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="6"><td>Saturday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr data-day="0"><td>Sunday</td><td>10:00 AM – 6:00 PM</td></tr>
+            </tbody>
+          </table>
+          <div class="contact-block">
+            <h3>Contact &amp; Directions</h3>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M9 1C6.24 1 4 3.24 4 6c0 4 5 11 5 11s5-7 5-11c0-2.76-2.24-5-5-5z"/><circle cx="9" cy="6" r="2"/>
+              </svg>
+              <p>1172 Dickinson St, Elizabeth, NJ 07201</p>
+            </div>
+            <div class="contact-item">
+              <svg class="icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M3 3h3l1.5 3.75L6 8.5a10 10 0 0 0 3.5 3.5l1.75-1.5L15 12v3a1 1 0 0 1-1 1C7.28 16 2 10.72 2 4a1 1 0 0 1 1-1z"/>
+              </svg>
+              <a href="tel:+19083446220">(908) 344-6220</a>
+            </div>
+            <div style="margin-top: var(--space-md); display:flex; gap: var(--space-sm); flex-wrap:wrap;">
+              <a href="tel:+19083446220" class="btn btn-fill">Call Now</a>
+              <a href="https://maps.google.com/?q=1172+Dickinson+St+Elizabeth+NJ+07201" target="_blank" rel="noopener" class="btn">Get Directions</a>
+            </div>
+          </div>
+        </div>
+        <div class="visit-map">
+          <iframe
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=1172+Dickinson+St+Elizabeth+NJ+07201"
+            title="Map to New Super Natural Nail and Spa"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>New Super Natural<br/>Nail &amp; Spa</h3>
+          <p>Elizabeth's premier nail salon, open 7 days a week for your convenience and comfort.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Manicures</a></li>
+            <li><a href="#services">Pedicures</a></li>
+            <li><a href="#services">Nail Enhancements</a></li>
+            <li><a href="#services">Nail Design</a></li>
+            <li><a href="#services">Eyelash Extensions</a></li>
+            <li><a href="#services">Waxing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="tel:+19083446220">(908) 344-6220</a></li>
+            <li><a href="https://maps.google.com/?q=1172+Dickinson+St+Elizabeth+NJ" target="_blank" rel="noopener">1172 Dickinson St</a></li>
+            <li><a href="https://maps.google.com/?q=1172+Dickinson+St+Elizabeth+NJ" target="_blank" rel="noopener">Elizabeth, NJ 07201</a></li>
+            <li><a href="#visit">Mon–Sat: 9AM–7PM</a></li>
+            <li><a href="#visit">Sun: 10AM–6PM</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> New Super Natural Nail &amp; Spa. All rights reserved.</span>
+        <span>1172 Dickinson St, Elizabeth, NJ 07201</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Hours logic (NJ = America/New_York)
+    const HOURS = {
+      0: { open: 10, close: 18 },  // Sun
+      1: { open: 9,  close: 19 },
+      2: { open: 9,  close: 19 },
+      3: { open: 9,  close: 19 },
+      4: { open: 9,  close: 19 },
+      5: { open: 9,  close: 19 },
+      6: { open: 9,  close: 19 },  // Sat
+    };
+
+    function getNJNow() {
+      return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    }
+
+    function updateStatus() {
+      const now   = getNJNow();
+      const day   = now.getDay();
+      const h     = now.getHours() + now.getMinutes() / 60;
+      const today = HOURS[day];
+      const open  = h >= today.open && h < today.close;
+      const dot   = document.getElementById('status-dot');
+      const txt   = document.getElementById('status-text');
+      dot.className = open ? 'open' : '';
+      txt.textContent = open ? 'Open Now' : `Closed · Opens ${HOURS[day].open > 12 ? HOURS[day].open - 12 + 'PM' : HOURS[day].open + 'AM'}`;
+    }
+
+    function highlightToday() {
+      const day = getNJNow().getDay();
+      document.querySelectorAll('#hours-table tr').forEach(tr => {
+        if (parseInt(tr.dataset.day) === day) tr.classList.add('today');
+      });
+    }
+
+    updateStatus();
+    highlightToday();
+    setInterval(updateStatus, 60000);
+
+    // ── Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    // ── Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+        if (mobileNav.classList.contains('open')) mobileNav.classList.remove('open');
+      });
+    });
+
+    // ── Intersection-based active nav
+    const sections = ['services','about','testimonials','visit'];
+    const links = document.querySelectorAll('.nav-links a');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  </script>
+</body>
+</html>
