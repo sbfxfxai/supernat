@@ -10,7 +10,9 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,7 +25,7 @@
       --sage-lt: oklch(92% 0.04 150);
       --sage-dk: oklch(35% 0.07 155);
       --ink:     oklch(18% 0.02 160);
-      --muted:   oklch(50% 0.025 155);
+      --muted:   oklch(38% 0.025 155);
       --border:  oklch(88% 0.025 155);
 
       --font-display: 'Playfair Display', Georgia, serif;
@@ -260,7 +262,7 @@
       gap: var(--space-md);
       text-align: center;
     }
-    .highlight-item h3 {
+    .highlight-item .highlight-stat {
       font-family: var(--font-display); font-style: italic;
       font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold);
     }
@@ -354,7 +356,7 @@
       filter: saturate(0.6) contrast(1.05);
     }
     .contact-block { margin-top: var(--space-lg); }
-    .contact-block h3 {
+    .contact-block-title {
       font-family: var(--font-display); font-size: 1.3rem; color: var(--sage-dk);
       margin-bottom: var(--space-sm);
     }
@@ -397,12 +399,12 @@
       padding-bottom: var(--space-lg);
       border-bottom: 1px solid oklch(40% 0.06 155);
     }
-    .footer-brand h3 {
+    .footer-brand-name {
       font-family: var(--font-display);
       font-size: 1.3rem; margin-bottom: var(--space-xs);
     }
     .footer-brand p { font-size: 0.82rem; opacity: 0.6; max-width: 32ch; line-height: 1.6; }
-    .footer-col h4 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: var(--space-sm); }
+    .footer-col-heading { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: var(--space-sm); }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .footer-col ul li a { font-size: 0.85rem; opacity: 0.75; transition: opacity 0.15s; }
     .footer-col ul li a:hover { opacity: 1; }
@@ -475,6 +477,8 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <!-- HERO -->
   <section id="hero">
     <div class="hero-text container" style="max-width:600px; margin:0; padding-left: clamp(1rem, 5vw, 4rem);">
@@ -501,24 +505,26 @@
           alt="New Super Natural Nail & Spa — salon interior"
           style="width:100%;height:100%;object-fit:cover;filter:saturate(0.85);"
           loading="eager"
+          fetchpriority="high"
+          width="820" height="680"
         />
     </div>
   </section>
 
   <!-- HIGHLIGHTS STRIP -->
-  <div id="highlights">
+  <div id="highlights" role="region" aria-label="Key facts">
     <div class="container">
       <div class="highlights-grid">
         <div class="highlight-item">
-          <h3>7</h3>
+          <p class="highlight-stat">7</p>
           <p>Days a Week</p>
         </div>
         <div class="highlight-item">
-          <h3>No.1</h3>
+          <p class="highlight-stat">No.1</p>
           <p>Best Nail Spa in NJ</p>
         </div>
         <div class="highlight-item">
-          <h3>4.5★</h3>
+          <p class="highlight-stat">4.5★</p>
           <p>Google Rating</p>
         </div>
       </div>
@@ -793,7 +799,7 @@
             </tbody>
           </table>
           <div class="contact-block">
-            <h3>Contact &amp; Directions</h3>
+            <p class="contact-block-title">Contact &amp; Directions</p>
             <div class="contact-item">
               <svg class="icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                 <path d="M9 1C6.24 1 4 3.24 4 6c0 4 5 11 5 11s5-7 5-11c0-2.76-2.24-5-5-5z"/><circle cx="9" cy="6" r="2"/>
@@ -825,16 +831,18 @@
     </div>
   </section>
 
+  </main><!-- /#main-content -->
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <h3>New Super Natural<br/>Nail &amp; Spa</h3>
+          <p class="footer-brand-name">New Super Natural<br/>Nail &amp; Spa</p>
           <p>Elizabeth's premier nail salon, open 7 days a week for your convenience and comfort.</p>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <p class="footer-col-heading">Services</p>
           <ul>
             <li><a href="#services">Manicures</a></li>
             <li><a href="#services">Pedicures</a></li>
@@ -845,7 +853,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Visit</h4>
+          <p class="footer-col-heading">Visit</p>
           <ul>
             <li><a href="tel:+19083446220">(908) 344-6220</a></li>
             <li><a href="https://maps.google.com/?q=1172+Dickinson+St+Elizabeth+NJ" target="_blank" rel="noopener">1172 Dickinson St</a></li>
