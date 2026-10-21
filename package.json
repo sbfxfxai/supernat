@@ -1,0 +1,13 @@
+{
+  "name": "supernat-nail-spa",
+  "version": "1.0.0",
+  "description": "New Super Natural Nail & Spa — website + photo scraper",
+  "scripts": {
+    "scrape": "node scripts/scrape-photos.js",
+    "inject": "node scripts/inject-photos.js",
+    "photos": "node scripts/scrape-photos.js && node scripts/inject-photos.js"
+  },
+  "dependencies": {
+    "puppeteer": "^25.15.0"
+  }
+}
